@@ -1,0 +1,62 @@
+import random
+
+# L'utilisateur doit saisir son nom
+nom = input("Veuillez saisir votre nom :")
+
+# Déclarer les variables qui permettent de stocker le nombre de victoire, de défaite et de matche nul du joueur
+victoires_joueur = 0
+victoires_ordinateur = 0
+nuls = 0
+
+# Mise en place d'une boucle utilisée jusqu'à ce que le joueur quitte le programme
+while True:
+	print(nom," : ",victoires_joueur," égalités : ",nuls," ordinateur : ", victoires_ordinateur)
+	coupJoueur = input("Entrez votre coup: (p)ierre, (f)euille, (c)iseaux ou (q)uitter :")
+	if coupJoueur == "q":
+		print("À bientôt !") 
+		break
+	if coupJoueur != "p" and coupJoueur != "f" and coupJoueur != "c":
+		continue
+
+# Afficher ce que le joueur a choisi
+	if coupJoueur == "p":
+		print("PIERRE contre",end=" ")
+	elif coupJoueur == "f":
+		print("FEUILLE contre",end=" ")
+	else:
+		print("CISEAUX contre",end= " ")
+
+# Afficher ce que l'ordinateur a choisi
+	randomNombre = random.randint(1,3)
+	if randomNombre == 1:
+		coupOrdinateur = "p"
+		print("PIERRE")
+	elif randomNombre == 2:
+		coupOrdinateur = "f"
+		print("FEUILLE")
+	else:
+		coupOrdinateur = "c"
+		print("CISEAUX")
+
+# Déterminer le résultat
+	if coupJoueur == coupOrdinateur :
+		print("La partie est nulle !")
+		nuls = nuls + 1
+	elif coupJoueur =="p" and coupOrdinateur =="c" :
+		print("Gagné !")
+		victoires_joueur = victoires_joueur + 1
+	elif coupJoueur =="f" and coupOrdinateur =="p" :
+		print("Gagné !")
+		victoires_joueur = victoires_joueur + 1
+	elif coupJoueur =="c" and coupOrdinateur =="f" :
+		print("Gagné !")
+		victoires_joueur = victoires_joueur + 1
+	elif coupJoueur =="p" and coupOrdinateur =="f" :
+		print("Perdu...")
+		victoires_ordinateur = victoires_ordinateur + 1
+	elif coupJoueur =="f" and coupOrdinateur =="c" :
+		print("Perdu...")
+		victoires_ordinateur = victoires_ordinateur + 1
+	elif coupJoueur =="c" and coupOrdinateur =="p" :
+		print("Perdu...")
+		victoires_ordinateur = victoires_ordinateur + 1
